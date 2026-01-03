@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Drcula | Games</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Cairo:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif; /* الخط الإنجليزي بشكل افتراضي */
+  color: #fff;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  background: linear-gradient(-45deg, #000, #0f2027, #203a43, #000);
+  background-size: 400% 400%;
+  animation: bg 15s ease infinite;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* نصوص العناوين */
+h1, h2, h3 {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 500;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* خط عربي عند تغيير اللغة */
+body[dir="rtl"] {
+  font-family: 'Cairo', 'Poppins', Arial, sans-serif;
+}
+
+/* العناوين بالعربية */
+body[dir="rtl"] h1,
+body[dir="rtl"] h2,
+body[dir="rtl"] h3 {
+  font-family: 'Cairo', 'Poppins', Arial, sans-serif;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+@keyframes bg {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* زر اللغة */
+.lang-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  padding: 8px 14px;
+  background: transparent;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 100;
+}
+
+.lang-btn:hover {
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 20px #00ffff;
+}
+
+header {
+  text-align: center;
+  padding: 40px;
+}
+
+header h1 {
+  color: #00ffff;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.game-card {
+  background: rgba(255,255,255,0.06);
+  padding: 25px;
+  border-radius: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
+  transition: 0.3s;
+  position: relative;
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 35px rgba(0,255,255,0.4);
+}
+
+.game-card h2 {
+  color: #00ffff;
+}
+
+.tag {
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  padding: 5px 12px;
+  border-radius: 15px;
+  background: #00ffff;
+  color: #000;
+  font-size: 13px;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 25px #00ffff;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+.rank-img {
+  position: absolute;
+  top: 60px;
+  width: 120px;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 10px rgba(255,215,0,0.7));
+  transition: right 0.3s, left 0.3s;
+}
+
+body[dir="rtl"] .rank-img {
+  left: 50px;
+  right: auto;
+}
+
+body[dir="ltr"] .rank-img {
+  right: 50px;
+  left: auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- زر اللغة -->
+<button class="lang-btn" onclick="toggleLang()">AR / EN</button>
+
+<header>
+  <h1 id="pageTitle">🎮 تصنيف الألعاب</h1>
+  <p id="pageSub">تفاصيل وتصنيف الألعاب المفضلة</p>
+</header>
+
+<div class="container">
+
+  <div class="game-card">
+    <h2>Valorant</h2>
+    <img src="gold2.png" alt="Gold 1 Rank" class="rank-img" id="valoRank">
+    <p id="valoText">
+      🔹 النوع: Tactical FPS<br>
+      🔹 أسلوب اللعب: تنافسي جدًا<br>
+      🔹 يحتاج تركيز + Aim + Teamwork
+    </p>
+    <div class="tag">Aim 9/10</div>
+    <div class="tag">Competitive 10/10</div>
+    <div class="tag">Fun 8/10</div>
+  </div>
+
+  <div class="game-card">
+    <h2>GTA V</h2>
+    <p id="gtaText">
+      🔹 النوع: Open World<br>
+      🔹 أسلوب اللعب: حر + قصة + أونلاين<br>
+      🔹 مناسب للمتعة والاستكشاف
+    </p>
+    <div class="tag">Story 9/10</div>
+    <div class="tag">Freedom 10/10</div>
+    <div class="tag">Online 8/10</div>
+  </div>
+
+  <div class="game-card">
+    <h2>CS2</h2>
+    <p id="csText">
+      🔹 النوع: Competitive FPS<br>
+      🔹 أسلوب اللعب: Skill-based<br>
+      🔹 يعتمد على الخبرة والاحتراف
+    </p>
+    <div class="tag">Aim 10/10</div>
+    <div class="tag">Skill 10/10</div>
+    <div class="tag">Graphics 7/10</div>
+  </div>
+
+  <a href="index.html" class="back-btn" id="backBtn">⬅ العودة للصفحة الرئيسية</a>
+
+</div>
+
+<footer>
+  Dev By : <span style="color:#00ffff;">Drcula</span> 🧛‍♂️
+</footer>
+
+<script>
+let currentLang = "ar";
+
+function toggleLang() {
+  if (currentLang === "ar") {
+    currentLang = "en";
+    document.documentElement.lang = "en";
+    document.body.dir = "ltr";
+
+    pageTitle.innerText = "🎮 Game Ratings";
+    pageSub.innerText = "Details and ratings of favorite games";
+
+    valoText.innerHTML = `
+      🔹 Genre: Tactical FPS<br>
+      🔹 Playstyle: Highly competitive<br>
+      🔹 Requires focus, aim & teamwork
+    `;
+
+    gtaText.innerHTML = `
+      🔹 Genre: Open World<br>
+      🔹 Playstyle: Free roam + story + online<br>
+      🔹 Perfect for fun and exploration
+    `;
+
+    csText.innerHTML = `
+      🔹 Genre: Competitive FPS<br>
+      🔹 Playstyle: Skill-based<br>
+      🔹 Depends on experience and precision
+    `;
+
+    backBtn.innerText = "⬅ Back to Profile";
+  } else {
+    currentLang = "ar";
+    document.documentElement.lang = "ar";
+    document.body.dir = "rtl";
+
+    pageTitle.innerText = "🎮 تصنيف الألعاب";
+    pageSub.innerText = "تفاصيل وتصنيف الألعاب المفضلة";
+
+    valoText.innerHTML = `
+      🔹 النوع: Tactical FPS<br>
+      🔹 أسلوب اللعب: تنافسي جدًا<br>
+      🔹 يحتاج تركيز + Aim + Teamwork
+    `;
+
+    gtaText.innerHTML = `
+      🔹 النوع: Open World<br>
+      🔹 أسلوب اللعب: حر + قصة + أونلاين<br>
+      🔹 مناسب للمتعة والاستكشاف
+    `;
+
+    csText.innerHTML = `
+      🔹 النوع: Competitive FPS<br>
+      🔹 أسلوب اللعب: Skill-based<br>
+      🔹 يعتمد على الخبرة والاحتراف
+    `;
+
+    backBtn.innerText = "⬅ العودة للملف الشخصي";
+  }
+}
+</script>
+
+</body>
+</html>
